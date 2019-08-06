@@ -54,3 +54,6 @@ pkg
 Gemfile.lock
 .gems/*
 node_modules
+
+# Rubymine Stuff
+.idea/

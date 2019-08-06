@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>SequenceServer: Custom BLAST Server</title>
+  <title>SequenceServer | <%= ENV['WEBSITE_NAME'] %></title>
   <meta name="author" content="Anurag Priyam">
   <meta name="author" content="Ben J. Woodcroft">
   <meta name="author" content="Vivek Rai">
@@ -14,17 +14,17 @@
   <meta name="description" content="Custom BLAST server provided by SequenceServer (http://www.sequenceserver.com)"/>
 
   <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
+      <script src="<%= ENV['SEQUENCESERVER_MOUNT_PATH'] %>/js/html5shiv.js"></script>
   <![endif]-->
 
   <link href='http://fonts.googleapis.com/css?family=Roboto:400' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
   <% if settings.production? %>
-    <link rel="stylesheet" media="screen,print" type="text/css" href="css/sequenceserver.min.css"/>
+    <link rel="stylesheet" media="screen,print" type="text/css" href="<%= ENV['SEQUENCESERVER_MOUNT_PATH'] %>/css/sequenceserver.min.css"/>
   <% else %>
-    <link rel="stylesheet" media="screen,print" type="text/css" href="css/bootstrap.min.css"/>
-    <link rel="stylesheet" media="screen,print" type="text/css" href="css/font-awesome.min.css"/>
-    <link rel="stylesheet" media="screen,print" type="text/css" href="css/custom.css"/>
+    <link rel="stylesheet" media="screen,print" type="text/css" href="<%= ENV['SEQUENCESERVER_MOUNT_PATH'] %>/css/bootstrap.min.css"/>
+    <link rel="stylesheet" media="screen,print" type="text/css" href="<%= ENV['SEQUENCESERVER_MOUNT_PATH'] %>/css/font-awesome.min.css"/>
+    <link rel="stylesheet" media="screen,print" type="text/css" href="<%= ENV['SEQUENCESERVER_MOUNT_PATH'] %>/css/custom.css"/>
   <% end %>
 </head>
 
@@ -33,21 +33,16 @@
     class="navbar">
     <div
       class="container">
-      <a
-        class="navbar-brand"
-        href="http://sequenceserver.com" target="_blank">
-        SequenceServer
-        <small>
-          <%= SequenceServer::VERSION %>
-        </small>
+      <a class="navbar-brand"
+         href="/<%= ENV['SEQUENCESERVER_MOUNT_PATH'] %>">
+        <%= ENV['WEBSITE_NAME'] %>
+        <small><%= "(#{ENV['WEBSITE_SUBTITLE']})" %></small>
+        <small>SequenceServer</small>
       </a>
       <ul class="nav navbar-nav navbar-right hover-reset focus-reset">
         <li>
-          <a
-            target="_blank"
-            href="http://www.sequenceserver.com/#support">
-            <i class="fa fa-comment-o"></i>
-            Help &amp; Support
+          <a href="/home">
+            Home
           </a>
         </li>
       </ul>
@@ -280,29 +275,6 @@
       class="container">
       <p
         class="text-center">
-        <a
-          href='http://www.sequenceserver.com'>
-          <%=
-            quote = [
-              "Custom BLAST web interface by SequenceServer.",
-              "SequenceServer: Local BLAST with bespoke html interface.",
-              "Set up custom BLAST interface with SequenceServer.",
-              "Easy BLASTing with SequenceServer.",
-              "Run BLAST locally with Sequenceserver.",
-              "BLAST against a custom, local database with SequenceServer.",
-              "Run BLAST locally on Mac OSX with SequenceServer.",
-              "Run BLAST locally on Ubuntu with SequenceServer.",
-              "Run BLAST locally on Linux with SequenceServer."
-            ][rand(9)]
-          %>
-        </a>
-        <a
-          class="twitter-share-button"
-          href="https://twitter.com/share"
-          data-url="http://www.sequenceserver.com" data-text="<%= quote %>" data-via="yeban" data-hashtags="bioinformatics">
-          Tweet
-        </a>
-        <br>
         Please cite:
         <a href="http://www.biorxiv.org/content/early/2015/11/27/033142">
           Priyam et al. (2015) Sequenceserver: a modern graphical user interface for custom BLAST databases
@@ -440,18 +412,18 @@
 
   <!-- JS -->
   <% if settings.production? %>
-    <script src="js/sequenceserver.min.js"></script>
+    <script src="<%= ENV['SEQUENCESERVER_MOUNT_PATH'] %>/js/sequenceserver.min.js"></script>
   <% else %>
-    <script type="text/javascript" src="js/underscore.min.js"></script>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/webshims/polyfiller.js"></script>
-    <script type="text/javascript" src="js/d3.v3.min.js"></script>
-    <script type="text/javascript" src="js/sequenceserver.js"></script>
-    <script type="text/javascript" src="js/sequenceserver.blast.js"></script>
-    <script type="text/javascript" src="js/jquery.t.js"></script>
-    <script type="text/javascript" src="js/sequence.js"></script>
+    <script type="text/javascript" src="<%= ENV['SEQUENCESERVER_MOUNT_PATH'] %>/js/underscore.min.js"></script>
+    <script type="text/javascript" src="<%= ENV['SEQUENCESERVER_MOUNT_PATH'] %>/js/jquery.min.js"></script>
+    <script type="text/javascript" src="<%= ENV['SEQUENCESERVER_MOUNT_PATH'] %>/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="<%= ENV['SEQUENCESERVER_MOUNT_PATH'] %>/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<%= ENV['SEQUENCESERVER_MOUNT_PATH'] %>/js/webshims/polyfiller.js"></script>
+    <script type="text/javascript" src="<%= ENV['SEQUENCESERVER_MOUNT_PATH'] %>/js/d3.v3.min.js"></script>
+    <script type="text/javascript" src="<%= ENV['SEQUENCESERVER_MOUNT_PATH'] %>/js/sequenceserver.js"></script>
+    <script type="text/javascript" src="<%= ENV['SEQUENCESERVER_MOUNT_PATH'] %>/js/sequenceserver.blast.js"></script>
+    <script type="text/javascript" src="<%= ENV['SEQUENCESERVER_MOUNT_PATH'] %>/js/jquery.t.js"></script>
+    <script type="text/javascript" src="<%= ENV['SEQUENCESERVER_MOUNT_PATH'] %>/js/sequence.js"></script>
   <% end %>
 
   <!-- twitter -->
