@@ -185,8 +185,3 @@ module SequenceServer
     end
   end
 end
-
-SequenceServer::Routes.routes.draw do
-  get "/#{ENV['SEQUENCESERVER_MOUNT_PATH']}/get_sequence/"
-  get "/#{ENV['SEQUENCESERVER_MOUNT_PATH']}/download/:search_id.:type"
-end
