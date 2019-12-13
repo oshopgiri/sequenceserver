@@ -186,3 +186,8 @@ target="#{target}">)
     end
   end
 end
+
+SequenceServer::Engine.routes do
+  get "/#{ENV['SEQUENCESERVER_MOUNT_PATH']}/get_sequence/"
+  get "/#{ENV['SEQUENCESERVER_MOUNT_PATH']}/download/:search_id.:type"
+end
