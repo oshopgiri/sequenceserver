@@ -62,8 +62,7 @@ module SequenceServer
       def a(link)
         return unless link[:title] && link[:url]
         target = absolute?(link[:url]) && '_blank' || '_self'
-        a =  %(<a href="#{link[:url]}" class="#{link[:class]}" \
-target="#{target}">)
+        a =  %(<a href="#{link[:url]}" class="#{link[:class]}" target="#{target}">)
         a << %(<i class="fa #{link[:icon]}"></i> ) if link[:icon]
         a << "#{link[:title]}</a>"
       end
@@ -187,7 +186,7 @@ target="#{target}">)
   end
 end
 
-SequenceServer::Engine.routes do
+SequenceServer::Routes.routes.draw do
   get "/#{ENV['SEQUENCESERVER_MOUNT_PATH']}/get_sequence/"
   get "/#{ENV['SEQUENCESERVER_MOUNT_PATH']}/download/:search_id.:type"
 end
