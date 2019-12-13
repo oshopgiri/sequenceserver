@@ -145,7 +145,7 @@ target="#{target}">)
     # Use whitespace to separate entries in sequence_ids (all other chars exist
     # in identifiers) and retreival_databases (we don't allow whitespace in a
     # database's name, so it's safe).
-    get '/get_sequence/' do
+    get "/#{ENV['SEQUENCESERVER_MOUNT_PATH']}/get_sequence/" do
       sequence_ids = params[:sequence_ids].split(/\s/)
       database_ids = params[:database_ids].split(/\s/)
 
@@ -160,7 +160,7 @@ target="#{target}">)
     end
 
     # Download BLAST report in various formats.
-    get '/download/:search_id.:type' do
+    get "/#{ENV['SEQUENCESERVER_MOUNT_PATH']}/download/:search_id.:type" do
       out = BLAST::Formatter.new(params[:search_id], params[:type])
       send_file out.file.path, :filename => out.filename, :type => out.mime
     end
